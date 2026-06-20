@@ -1051,8 +1051,14 @@ svg {
   transition: transform var(--transition-slow);
 }
 
-.testimonial-card {
+.testimonial-slide {
   min-width: 100%;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+.testimonial-card {
+  width: 100%;
   padding: 40px;
   background-color: var(--white);
   border-radius: var(--border-radius-md);

@@ -62,6 +62,35 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  // Scrollspy: Update active nav link based on scroll position
+  const sections = document.querySelectorAll('section[id]');
+  const scrollSpy = () => {
+    const scrollPosition = window.scrollY || document.documentElement.scrollTop;
+    let currentActiveSectionId = '';
+
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop - 140; // adjust for sticky navbar offset
+      const sectionHeight = section.offsetHeight;
+      
+      if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+        currentActiveSectionId = section.getAttribute('id');
+      }
+    });
+
+    if (currentActiveSectionId) {
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${currentActiveSectionId}`) {
+          link.classList.add('active');
+        }
+      });
+    }
+  };
+
+  window.addEventListener('scroll', scrollSpy);
+  scrollSpy(); // Set initial active tab on page load
+
+
   /* ==========================================================================
      3. SCROLL ANIMATIONS (INTERSECTION OBSERVER)
      ========================================================================== */
@@ -332,7 +361,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // Create pre-filled WhatsApp link
       const whatsappNumber = '5511999999999'; // Base phone number
-      const introMessage = `Olá Ryan Empilhadeiras! Enviei um contato pelo site e gostaria de um orçamento:\n\n`;
+      const introMessage = `Olá VM Empilhadeiras! Enviei um contato pelo site e gostaria de um orçamento:\n\n`;
       const dataMessage = `*Nome:* ${name}\n*Empresa:* ${company}\n*Celular:* ${phone}\n*Serviço:* ${serviceName}\n*Mensagem/Equipamento:* ${message}`;
       
       const fullMessage = encodeURIComponent(introMessage + dataMessage);
