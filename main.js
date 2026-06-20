@@ -262,29 +262,12 @@ document.addEventListener('DOMContentLoaded', () => {
      ========================================================================== */
   const form = document.getElementById('contact-form');
   const formName = document.getElementById('form-name');
-  const formPhone = document.getElementById('form-phone');
   const formService = document.getElementById('form-service');
   const formMessage = document.getElementById('form-message');
   const successCard = document.getElementById('success-card');
   const submitBtn = document.getElementById('submit-btn');
 
-  // Input phone mask: (XX) XXXXX-XXXX
-  formPhone.addEventListener('input', (e) => {
-    let val = e.target.value.replace(/\D/g, '');
-    if (val.length > 11) val = val.substring(0, 11);
-    
-    let formatted = '';
-    if (val.length > 0) {
-      formatted = '(' + val.substring(0, 2);
-    }
-    if (val.length > 2) {
-      formatted += ') ' + val.substring(2, 7);
-    }
-    if (val.length > 7) {
-      formatted += '-' + val.substring(7, 11);
-    }
-    e.target.value = formatted;
-  });
+
 
   // Validation function
   const validateField = (input) => {
@@ -295,12 +278,7 @@ document.addEventListener('DOMContentLoaded', () => {
       isValid = false;
     }
 
-    if (input === formPhone) {
-      const phoneDigits = input.value.replace(/\D/g, '');
-      if (phoneDigits.length < 10) {
-        isValid = false;
-      }
-    }
+
 
     if (!isValid) {
       parent.classList.add('invalid');
@@ -312,7 +290,7 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   // Real-time validation
-  [formName, formPhone, formService, formMessage].forEach(input => {
+  [formName, formService, formMessage].forEach(input => {
     input.addEventListener('blur', () => validateField(input));
     input.addEventListener('input', () => {
       if (input.parentElement.classList.contains('invalid')) {
@@ -332,7 +310,7 @@ document.addEventListener('DOMContentLoaded', () => {
     e.preventDefault();
 
     let isFormValid = true;
-    [formName, formPhone, formService, formMessage].forEach(input => {
+    [formName, formService, formMessage].forEach(input => {
       const isValid = validateField(input);
       if (!isValid) isFormValid = false;
     });
@@ -346,7 +324,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // Gather data
     const name = formName.value.trim();
     const company = document.getElementById('form-company').value.trim() || 'Não informada';
-    const phone = formPhone.value.trim();
     const serviceName = formService.options[formService.selectedIndex].text;
     const message = formMessage.value.trim();
 
@@ -360,9 +337,9 @@ document.addEventListener('DOMContentLoaded', () => {
       successCard.classList.add('active');
 
       // Create pre-filled WhatsApp link
-      const whatsappNumber = '5511999999999'; // Base phone number
-      const introMessage = `Olá VM Empilhadeiras! Enviei um contato pelo site e gostaria de um orçamento:\n\n`;
-      const dataMessage = `*Nome:* ${name}\n*Empresa:* ${company}\n*Celular:* ${phone}\n*Serviço:* ${serviceName}\n*Mensagem/Equipamento:* ${message}`;
+      const whatsappNumber = '553192256929'; // Base phone number
+      const introMessage = `Olá! Gostaria de solicitar um orçamento!\n\n`;
+      const dataMessage = `*Nome:* ${name}\n*Empresa:* ${company}\n*Serviço:* ${serviceName}\n*Mensagem/Equipamento:* ${message}`;
       
       const fullMessage = encodeURIComponent(introMessage + dataMessage);
       const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${fullMessage}`;
