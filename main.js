@@ -326,7 +326,7 @@ document.addEventListener('DOMContentLoaded', () => {
       successCard.classList.add('active');
 
       // Pre-filled WhatsApp link
-      const whatsappNumber = '553192256929'; // Base phone number
+      const whatsappNumber = '5531991125510'; // Base phone number
       const introMessage = `Olá! Gostaria de solicitar um orçamento!\n\n`;
       const dataMessage = `*Nome:* ${name}\n*Empresa:* ${company}\n*Serviço:* ${serviceName}\n*Mensagem/Equipamento:* ${message}`;
       

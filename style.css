@@ -1,6 +1,4 @@
-/* ==========================================================================
-   DESIGN SYSTEM & VARIABLES
-   ========================================================================== */
+/* DESIGN SYSTEM & VARIABLES */
 :root {
   /* Color Palette */
   --charcoal: #3c3a44;
@@ -8,14 +6,18 @@
   --charcoal-dark: #222027;
   --alice-blue: #e9f1f7;
   --alice-blue-dark: #d2e1ec;
-  --scarlet-rush: #db3a34;
-  --scarlet-rush-hover: #b82d27;
-  --scarlet-rush-glow: rgba(219, 58, 52, 0.4);
+  --brand-orange: rgb(237, 123, 19);
+  --brand-orange-hover: rgb(212, 107, 10);
+  --brand-orange-glow: rgba(237, 123, 19, 0.4);
+  --brand-gradient-start: hsl(211, 68%, 33%);
+  --brand-gradient-end: hsl(213, 81%, 15%);
+  --brand-gradient: linear-gradient(135deg, var(--brand-gradient-start), var(--brand-gradient-end));
+  --brand-gradient-glow: rgba(26, 68, 114, 0.4);
   --golden-bronze: #cba135;
   --golden-bronze-glow: rgba(203, 161, 53, 0.3);
-  --jungle-teal: #57886c;
-  --jungle-teal-hover: #456c55;
-  --jungle-teal-glow: rgba(87, 136, 108, 0.4);
+  --whatsapp-green: #25d366;
+  --whatsapp-green-hover: #1ebe5d;
+  --whatsapp-green-glow: rgba(37, 211, 102, 0.4);
 
   /* Neutrals */
   --white: #ffffff;
@@ -43,9 +45,7 @@
   --border-radius-lg: 24px;
 }
 
-/* ==========================================================================
-   RESET & BASE STYLES
-   ========================================================================== */
+/* RESET & BASE STYLES */
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
@@ -112,9 +112,7 @@ svg {
   align-items: center;
 }
 
-/* ==========================================================================
-   BUTTONS & UI ELEMENTS
-   ========================================================================== */
+/* BUTTONS & UI ELEMENTS */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -145,27 +143,27 @@ svg {
 }
 
 .btn-primary {
-  background-color: var(--scarlet-rush);
+  background-color: var(--brand-orange);
   color: var(--white);
-  box-shadow: 0 4px 14px var(--scarlet-rush-glow);
+  box-shadow: 0 4px 14px var(--brand-orange-glow);
 }
 
 .btn-primary:hover {
-  background-color: var(--scarlet-rush-hover);
+  background-color: var(--brand-orange-hover);
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px var(--scarlet-rush-glow);
+  box-shadow: 0 6px 20px var(--brand-orange-glow);
 }
 
 .btn-whatsapp {
-  background-color: var(--jungle-teal);
+  background-color: var(--whatsapp-green);
   color: var(--white);
-  box-shadow: 0 4px 14px var(--jungle-teal-glow);
+  box-shadow: 0 4px 14px var(--whatsapp-green-glow);
 }
 
 .btn-whatsapp:hover {
-  background-color: var(--jungle-teal-hover);
+  background-color: var(--whatsapp-green-hover);
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px var(--jungle-teal-glow);
+  box-shadow: 0 6px 20px var(--whatsapp-green-glow);
 }
 
 .btn-block {
@@ -188,7 +186,7 @@ svg {
   font-size: 0.9rem;
   text-transform: uppercase;
   letter-spacing: 2px;
-  color: var(--scarlet-rush);
+  color: var(--brand-orange);
   font-weight: 700;
   margin-bottom: 10px;
   display: block;
@@ -220,11 +218,11 @@ svg {
 
 /* Text helpers */
 .accent-text {
-  color: var(--scarlet-rush);
+  color: var(--brand-orange);
 }
 
 .text-gradient {
-  background: linear-gradient(135deg, var(--scarlet-rush), var(--golden-bronze));
+  background: linear-gradient(135deg, var(--brand-orange), var(--golden-bronze));
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -238,9 +236,7 @@ svg {
   color: var(--alice-blue-dark);
 }
 
-/* ==========================================================================
-   HEADER / NAVIGATION
-   ========================================================================== */
+/* HEADER / NAVIGATION */
 .header {
   position: fixed;
   top: 0;
@@ -271,13 +267,19 @@ svg {
 .logo {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
 }
 
-.logo-icon {
-  width: 32px;
-  height: 32px;
-  color: var(--scarlet-rush);
+.logo-img {
+  height: 42px;
+  width: auto;
+  object-fit: contain;
+  transition: var(--transition-normal);
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.05));
+}
+
+.header.scrolled .logo-img {
+  height: 36px;
 }
 
 .logo-text {
@@ -307,7 +309,7 @@ svg {
 }
 
 .nav-link:hover, .nav-link.active {
-  color: var(--scarlet-rush);
+  color: var(--brand-orange);
 }
 
 .nav-link::after {
@@ -317,7 +319,7 @@ svg {
   left: 0;
   width: 0;
   height: 2px;
-  background-color: var(--scarlet-rush);
+  background-color: var(--brand-orange);
   transition: var(--transition-normal);
 }
 
@@ -349,9 +351,7 @@ svg {
   transition: var(--transition-normal);
 }
 
-/* ==========================================================================
-   HERO SECTION
-   ========================================================================== */
+/* HERO SECTION */
 .hero {
   position: relative;
   padding-top: calc(var(--header-height) + 60px);
@@ -398,7 +398,7 @@ svg {
 .badge-pulse {
   width: 8px;
   height: 8px;
-  background-color: var(--scarlet-rush);
+  background-color: var(--brand-orange);
   border-radius: 50%;
   display: inline-block;
   animation: pulse 1.8s infinite;
@@ -508,7 +508,7 @@ svg {
   font-family: var(--font-heading);
   font-size: 2.2rem;
   font-weight: 800;
-  color: var(--scarlet-rush);
+  color: var(--brand-orange);
   line-height: 1;
 }
 
@@ -532,9 +532,7 @@ svg {
   100% { transform: translateY(-12px); }
 }
 
-/* ==========================================================================
-   STATS BAR
-   ========================================================================== */
+/* STATS BAR */
 .stats-bar {
   background-color: var(--white);
   padding: 40px 0;
@@ -567,7 +565,7 @@ svg {
 .stat-icon {
   width: 44px;
   height: 44px;
-  color: var(--scarlet-rush);
+  color: var(--brand-orange);
   flex-shrink: 0;
 }
 
@@ -603,9 +601,7 @@ svg {
   font-size: 0.85rem;
 }
 
-/* ==========================================================================
-   SERVICES SECTION
-   ========================================================================== */
+/* SERVICES SECTION */
 .services {
   background-color: var(--gray-100);
   padding: 100px 0;
@@ -662,7 +658,7 @@ svg {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--scarlet-rush);
+  color: var(--brand-orange);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
   padding: 12px;
 }
@@ -711,22 +707,20 @@ svg {
 .service-link {
   font-family: var(--font-heading);
   font-weight: 700;
-  color: var(--scarlet-rush);
+  color: var(--brand-orange);
   font-size: 0.95rem;
   margin-top: auto;
   align-self: flex-start;
 }
 
 .service-link:hover {
-  color: var(--scarlet-rush-hover);
+  color: var(--brand-orange-hover);
   transform: translateX(5px);
 }
 
-/* ==========================================================================
-   DIFERENCIAIS / VALUE PROP
-   ========================================================================== */
+/* DIFERENCIAIS / VALUE PROP */
 .diferenciais {
-  background-color: var(--charcoal);
+  background: var(--brand-gradient);
   padding: 100px 0;
   color: var(--white);
 }
@@ -813,9 +807,7 @@ svg {
   opacity: 0.9;
 }
 
-/* ==========================================================================
-   PORTFOLIO / GALLERY
-   ========================================================================== */
+/* PORTFOLIO / GALLERY */
 .gallery-section {
   padding: 100px 0;
   background-color: var(--white);
@@ -841,9 +833,9 @@ svg {
 }
 
 .filter-btn:hover, .filter-btn.active {
-  background-color: var(--scarlet-rush);
+  background-color: var(--brand-orange);
   color: var(--white);
-  box-shadow: 0 4px 12px var(--scarlet-rush-glow);
+  box-shadow: 0 4px 12px var(--brand-orange-glow);
 }
 
 .gallery-grid {
@@ -971,7 +963,7 @@ svg {
 }
 
 .lightbox-close:hover {
-  color: var(--scarlet-rush);
+  color: var(--brand-orange);
 }
 
 .lightbox-content-wrapper {
@@ -1025,15 +1017,13 @@ svg {
 }
 
 .lightbox-prev:hover, .lightbox-next:hover {
-  background-color: var(--scarlet-rush);
+  background-color: var(--brand-orange);
 }
 
 .lightbox-prev { left: 40px; }
 .lightbox-next { right: 40px; }
 
-/* ==========================================================================
-   TESTIMONIALS
-   ========================================================================== */
+/* TESTIMONIALS */
 .testimonials {
   background-color: var(--alice-blue);
   padding: 100px 0;
@@ -1055,6 +1045,7 @@ svg {
   min-width: 100%;
   padding: 0 20px;
   box-sizing: border-box;
+  display: flex;
 }
 
 .testimonial-card {
@@ -1121,13 +1112,11 @@ svg {
 }
 
 .dot.active {
-  background-color: var(--scarlet-rush);
+  background-color: var(--brand-orange);
   transform: scale(1.2);
 }
 
-/* ==========================================================================
-   CALL TO ACTION BANNER
-   ========================================================================== */
+/* CALL TO ACTION BANNER */
 .cta-banner {
   background: linear-gradient(135deg, var(--charcoal), var(--charcoal-dark));
   padding: 80px 0;
@@ -1142,7 +1131,7 @@ svg {
   left: 30%;
   width: 400px;
   height: 400px;
-  background-color: var(--scarlet-rush);
+  background-color: var(--brand-orange);
   opacity: 0.15;
   filter: blur(100px);
   pointer-events: none;
@@ -1223,7 +1212,7 @@ svg {
 }
 
 .contact-link:hover {
-  color: var(--scarlet-rush);
+  color: var(--brand-orange);
 }
 
 /* Contact Form styling */
@@ -1274,7 +1263,7 @@ svg {
 }
 
 .form-control:focus {
-  border-color: var(--scarlet-rush);
+  border-color: var(--brand-orange);
 }
 
 .form-label {
@@ -1295,7 +1284,7 @@ svg {
   top: -10px;
   left: 10px;
   font-size: 0.8rem;
-  color: var(--scarlet-rush);
+  color: var(--brand-orange);
   font-weight: 600;
 }
 
@@ -1309,7 +1298,7 @@ svg {
   top: -10px;
   left: 10px;
   font-size: 0.8rem;
-  color: var(--scarlet-rush);
+  color: var(--brand-orange);
   font-weight: 600;
 }
 
@@ -1319,12 +1308,12 @@ svg {
 
 /* Errors style */
 .form-group.invalid .form-control {
-  border-color: var(--scarlet-rush);
+  border-color: var(--brand-orange);
 }
 
 .error-message {
   font-size: 0.75rem;
-  color: var(--scarlet-rush);
+  color: var(--brand-orange);
   position: absolute;
   bottom: -18px;
   left: 2px;
@@ -1403,7 +1392,7 @@ svg {
   position: relative;
   border-radius: 50%;
   box-sizing: content-box;
-  border: 4px solid var(--jungle-teal);
+  border: 4px solid var(--whatsapp-green);
   overflow: hidden;
 }
 
@@ -1420,7 +1409,7 @@ svg {
 
 .icon-line {
   height: 5px;
-  background-color: var(--jungle-teal);
+  background-color: var(--whatsapp-green);
   display: block;
   border-radius: 2px;
   position: absolute;
@@ -1453,7 +1442,7 @@ svg {
 
 .success-card h3 {
   font-size: 1.6rem;
-  color: var(--jungle-teal);
+  color: #1b9a59;
   margin-bottom: 10px;
 }
 
@@ -1503,7 +1492,7 @@ svg {
 }
 
 .social-links a:hover {
-  background-color: var(--scarlet-rush);
+  background-color: var(--brand-orange);
   color: var(--white);
   transform: translateY(-3px);
 }
@@ -1538,7 +1527,7 @@ svg {
 }
 
 .footer-col-links a:hover {
-  color: var(--scarlet-rush);
+  color: var(--brand-orange);
   padding-left: 5px;
 }
 
@@ -1603,7 +1592,7 @@ svg {
   position: absolute;
   top: -2px;
   right: -2px;
-  background-color: var(--scarlet-rush);
+  background-color: var(--brand-orange);
   color: var(--white);
   font-size: 0.75rem;
   width: 20px;
