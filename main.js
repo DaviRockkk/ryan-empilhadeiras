@@ -112,7 +112,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const galleryItems = document.querySelectorAll('.gallery-item');
   const lightbox = document.getElementById('lightbox');
   const lightboxImg = document.getElementById('lightbox-img');
-  const lightboxCaption = document.getElementById('lightbox-caption');
   const lightboxClose = document.getElementById('lightbox-close');
   const lightboxPrev = document.getElementById('lightbox-prev');
   const lightboxNext = document.getElementById('lightbox-next');
@@ -156,11 +155,9 @@ document.addEventListener('DOMContentLoaded', () => {
     currentImageIndex = index;
     const item = activeGalleryItems[currentImageIndex];
     const img = item.querySelector('.gallery-img');
-    const title = item.querySelector('.gallery-item-title').textContent;
     
     lightboxImg.src = img.src;
     lightboxImg.alt = img.alt;
-    lightboxCaption.textContent = title;
     
     lightbox.classList.add('active');
     document.body.style.overflow = 'hidden'; // Stop page scroll
