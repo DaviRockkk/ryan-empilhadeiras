@@ -1,8 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-  /* ==========================================================================
-     1. HEADER SCROLL EFFECT
-     ========================================================================== */
+  // HEADER SCROLL EFFECT
   const header = document.getElementById('header');
   
   const handleScroll = () => {
@@ -14,11 +12,9 @@ document.addEventListener('DOMContentLoaded', () => {
   };
   
   window.addEventListener('scroll', handleScroll);
-  handleScroll(); // Initial check on load
+  handleScroll(); 
 
-  /* ==========================================================================
-     2. MOBILE MENU
-     ========================================================================== */
+  // MOBILE MENU
   const menuToggle = document.getElementById('menu-toggle');
   const navMenu = document.getElementById('nav-menu');
   const navLinks = document.querySelectorAll('.nav-link');
@@ -62,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Scrollspy: Update active nav link based on scroll position
+  // Scrollspy
   const sections = document.querySelectorAll('section[id]');
   const scrollSpy = () => {
     const scrollPosition = window.scrollY || document.documentElement.scrollTop;
@@ -91,9 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
   scrollSpy(); // Set initial active tab on page load
 
 
-  /* ==========================================================================
-     3. SCROLL ANIMATIONS (INTERSECTION OBSERVER)
-     ========================================================================== */
+  // SCROLL ANIMATIONS (INTERSECTION OBSERVER)
   const fadeElements = document.querySelectorAll('.fade-in-up');
   
   const observerOptions = {
@@ -113,9 +107,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   fadeElements.forEach(el => fadeObserver.observe(el));
 
-  /* ==========================================================================
-     4. GALLERY FILTER & LIGHTBOX
-     ========================================================================== */
+  // GALLERY FILTER & LIGHTBOX
   const filterBtns = document.querySelectorAll('.filter-btn');
   const galleryItems = document.querySelectorAll('.gallery-item');
   const lightbox = document.getElementById('lightbox');
@@ -219,9 +211,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (e.key === 'ArrowLeft') showPrevImage();
   });
 
-  /* ==========================================================================
-     5. TESTIMONIALS SLIDER
-     ========================================================================== */
+  // CLIENTS SLIDER
   const track = document.getElementById('testimonials-track');
   const dots = document.querySelectorAll('.dot');
   let currentSlide = 0;
@@ -257,9 +247,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   startSliderTimer();
 
-  /* ==========================================================================
-     6. CONTACT FORM VALIDATION & WHATSAPP REDIRECT
-     ========================================================================== */
+  // CONTACT FORM VALIDATION & WHATSAPP REDIRECT
+
   const form = document.getElementById('contact-form');
   const formName = document.getElementById('form-name');
   const formService = document.getElementById('form-service');
@@ -336,7 +325,7 @@ document.addEventListener('DOMContentLoaded', () => {
       form.style.display = 'none';
       successCard.classList.add('active');
 
-      // Create pre-filled WhatsApp link
+      // Pre-filled WhatsApp link
       const whatsappNumber = '553192256929'; // Base phone number
       const introMessage = `Olá! Gostaria de solicitar um orçamento!\n\n`;
       const dataMessage = `*Nome:* ${name}\n*Empresa:* ${company}\n*Serviço:* ${serviceName}\n*Mensagem/Equipamento:* ${message}`;
